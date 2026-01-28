@@ -1,0 +1,35 @@
+<?php
+
+// app/Repositories/ItemRepository.php
+namespace App\Repositories;
+
+use App\Models\Item;
+
+class ItemRepository
+{
+  public function paginate(int $perPage = 10)
+  {
+    return Item::paginate($perPage);
+  }
+
+  public function find(int $id): Item
+  {
+    return Item::findOrFail($id);
+  }
+
+  public function create(array $data): Item
+  {
+    return Item::create($data);
+  }
+
+  public function update(Item $item, array $data): Item
+  {
+    $item->update($data);
+    return $item;
+  }
+
+  public function delete(Item $item): bool
+  {
+    return $item->delete();
+  }
+}
